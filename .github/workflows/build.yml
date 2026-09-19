@@ -10,7 +10,7 @@
          - run: |
              export THEOS=$HOME/theos
              export PATH="$(brew --prefix make)/libexec/gnubin:$PATH"
-             make package
+             make package IAPSim_CFLAGS="-fobjc-arc -Wno-error"
              mkdir out
              cp packages/*.deb out/
              find .theos -name IAPSim.dylib -exec cp {} out/ \;
