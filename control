@@ -1,0 +1,9 @@
+Package: com.example.iapsim
+Name: IAPSim
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Kendi oyunum icin StoreKit 1 IAP simulasyonu (test amacli)
+Maintainer: Ben
+Author: Ben
+Section: Tweaks
+Depends: mobilesubstrate
