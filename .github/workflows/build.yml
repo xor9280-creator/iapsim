@@ -1,0 +1,20 @@
+   name: build
+   on: workflow_dispatch
+   jobs:
+     build:
+       runs-on: macos-latest
+       steps:
+         - uses: actions/checkout@v4
+         - run: brew install ldid dpkg make
+         - run: git clone --recursive https://github.com/theos/theos.git $HOME/theos
+         - run: |
+             export THEOS=$HOME/theos
+             export PATH="$(brew --prefix make)/libexec/gnubin:$PATH"
+             make package
+             mkdir out
+             cp packages/*.deb out/
+             find .theos -name IAPSim.dylib -exec cp {} out/ \;
+         - uses: actions/upload-artifact@v4
+           with:
+             name: iapsim
+             path: out/*
